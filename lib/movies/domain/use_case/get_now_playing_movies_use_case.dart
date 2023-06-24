@@ -4,11 +4,11 @@ import 'package:movies_clean_code/movies/domain/repository/base_movies_repositor
 
 import '../../../core/failure/failure.dart';
 
-class GetPopularMoviesUseCase {
+class GetNowPlayingMoviesUseCase {
   final BaseMoviesRepository baseMoviesRepository;
 
-  GetPopularMoviesUseCase(this.baseMoviesRepository);
+  GetNowPlayingMoviesUseCase(this.baseMoviesRepository);
   Future<Either<Failure, List<MovieEntity>>> execute() async {
-    return await baseMoviesRepository.getPopularMovies();
+    return await baseMoviesRepository.getNowPlayingMovies();
   }
 }

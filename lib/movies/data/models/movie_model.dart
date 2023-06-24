@@ -14,7 +14,7 @@ class MovieModel extends MovieEntity {
         id: json["id"],
         title: json["title"],
         backdropPath: json["backdrop_path"],
-        genreIds: List<int>.from(json["genreIds"].map((e) => e)),
+        genreIds: List<int>.from(json["genre_ids"].map((e) => e)),
         overview: json["overview"],
         voteAverage: json["voteAverage"],
       );

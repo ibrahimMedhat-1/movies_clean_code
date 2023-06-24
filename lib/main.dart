@@ -1,25 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'movies/domain/entity/movie_entity.dart';
-
 void main() {
-  MovieEntity movie = const MovieEntity(
-    id: 1,
-    title: 'title',
-    backdropPath: 'backdropPath',
-    genreIds: [0],
-    overview: 'overview',
-    voteAverage: 1.9,
-  );
-  MovieEntity movie1 = const MovieEntity(
-    id: 1,
-    title: 'title',
-    backdropPath: 'backdropPath',
-    genreIds: [0],
-    overview: 'overview',
-    voteAverage: 1.9,
-  );
-  print(movie == movie1);
   runApp(const MyApp());
 }
 
