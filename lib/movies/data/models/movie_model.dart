@@ -1,14 +1,14 @@
 import 'package:movies_clean_code/movies/domain/entity/movie_entity.dart';
 
 class MovieModel extends MovieEntity {
-  MovieModel({
-    required super.id,
-    required super.title,
-    required super.backdropPath,
-    required super.genreIds,
-    required super.overview,
-    required super.voteAverage,
-  });
+  MovieModel(
+      {required super.id,
+      required super.title,
+      required super.backdropPath,
+      required super.genreIds,
+      required super.overview,
+      required super.voteAverage,
+      required super.releaseDate});
 
   factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
         id: json["id"],
@@ -17,5 +17,6 @@ class MovieModel extends MovieEntity {
         genreIds: List<int>.from(json["genre_ids"].map((e) => e)),
         overview: json["overview"],
         voteAverage: json["voteAverage"],
+        releaseDate: json['release_date'],
       );
 }
