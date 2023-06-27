@@ -12,8 +12,12 @@ class MainMoviesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('build');
     return BlocProvider(
-      create: (context) => sl<HomePageBloc>()..add(GetNowPlayingMoviesEvent()),
+      create: (context) => sl<HomePageBloc>()
+        ..add(GetNowPlayingMoviesEvent())
+        ..add(GetPopularMoviesEvent())
+        ..add(GetTopRatedMoviesEvent()),
       child: Scaffold(
         body: SingleChildScrollView(
           key: const Key('movieScrollView'),
@@ -38,10 +42,10 @@ class MainMoviesScreen extends StatelessWidget {
                       onTap: () {
                         /// TODO : NAVIGATION TO POPULAR SCREEN
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Text('See More'),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -77,10 +81,10 @@ class MainMoviesScreen extends StatelessWidget {
                       onTap: () {
                         /// TODO : NAVIGATION TO Top Rated Movies Screen
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Text('See More'),
                             Icon(
                               Icons.arrow_forward_ios,
