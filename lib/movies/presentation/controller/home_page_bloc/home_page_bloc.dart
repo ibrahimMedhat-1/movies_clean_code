@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_clean_code/core/base_use_case/base_use_case.dart';
 import 'package:movies_clean_code/core/utils/enums.dart';
 import 'package:movies_clean_code/movies/domain/use_case/get_now_playing_movies_use_case.dart';
 import 'package:movies_clean_code/movies/presentation/controller/home_page_bloc/home_page_event.dart';
@@ -18,7 +19,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     this.getTopRatedMoviesUseCase,
   ) : super(const HomePageState()) {
     on<GetNowPlayingMoviesEvent>((event, emit) async {
-      final result = await getNowPlayingMoviesUseCase.execute();
+      final result = await getNowPlayingMoviesUseCase(NoParameters());
       result.fold(
           (l) => emit(state.copyWith(
                 nowPlayingState: RequestState.isLoaded,
@@ -30,7 +31,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
               )));
     });
     on<GetPopularMoviesEvent>((event, emit) async {
-      final result = await getPopularMoviesUseCase.execute();
+      final result = await getPopularMoviesUseCase(NoParameters());
 
       result.fold(
           (l) => emit(state.copyWith(
@@ -43,7 +44,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
               )));
     });
     on<GetTopRatedMoviesEvent>((event, emit) async {
-      final result = await getTopRatedMoviesUseCase.execute();
+      final result = await getTopRatedMoviesUseCase(NoParameters());
       result.fold(
           (l) => emit(state.copyWith(
                 topRatedState: RequestState.isLoaded,

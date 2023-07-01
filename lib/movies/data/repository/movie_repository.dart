@@ -5,6 +5,7 @@ import 'package:movies_clean_code/movies/domain/entity/movie_entity.dart';
 import 'package:movies_clean_code/movies/domain/repository/base_movies_repository.dart';
 
 import '../data_source/movie_remote_data_source.dart';
+import '../models/movie_details_model.dart';
 
 class MovieRepository extends BaseMoviesRepository {
   final BaseMovieRemoteDataSource baseMovieRemoteDataSource;
@@ -34,6 +35,16 @@ class MovieRepository extends BaseMoviesRepository {
   @override
   Future<Either<Failure, List<MovieEntity>>> getNowPlayingMovies() async {
     final result = await baseMovieRemoteDataSource.getNowPlayingMovies();
+    try {
+      return Right(result);
+    } on ServerErrorException catch (failure) {
+      return Left(ServerFailure(failure.errorMessageModel.statusMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, MovieDetailsModel>> getMovieDetails(parameters) async {
+    final result = await baseMovieRemoteDataSource.getMovieDetails(parameters);
     try {
       return Right(result);
     } on ServerErrorException catch (failure) {

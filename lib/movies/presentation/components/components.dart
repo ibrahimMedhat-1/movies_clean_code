@@ -13,7 +13,9 @@ import '../../../core/network/api_constance.dart';
 Widget nowPlayingCarousalSliderWidget() => BlocBuilder<HomePageBloc, HomePageState>(
       buildWhen: (previous, current) => previous.nowPlayingState != current.nowPlayingState,
       builder: (context, state) {
-        print('nowPlaying bloc ${state.nowPlayingState}');
+        if (state.nowPlayingState == RequestState.isLoaded) {
+          print(state.nowPlayingMoviesList[0].id);
+        }
         switch (state.nowPlayingState) {
           case RequestState.isLoading:
             return const SizedBox(
